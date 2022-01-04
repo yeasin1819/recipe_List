@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
 
 class RecipeCard extends StatelessWidget {
-  final String title;
-  final String rating;
-  final String cookTime;
-  final String thumbnailUrl;
-  RecipeCard({
-    @required this.title,
-    @required this.cookTime,
-    @required this.rating,
-    @required this.thumbnailUrl,
-  });
-  @override
+  final String name, totalTime, rating, imageUrl;
+  RecipeCard(this.name, this.totalTime, this.rating, this.imageUrl);
+
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
       width: MediaQuery.of(context).size.width,
       height: 180,
       decoration: BoxDecoration(
@@ -36,7 +28,7 @@ class RecipeCard extends StatelessWidget {
             Colors.black.withOpacity(0.35),
             BlendMode.multiply,
           ),
-          image: NetworkImage(thumbnailUrl),
+          image: NetworkImage(imageUrl),
           fit: BoxFit.cover,
         ),
       ),
@@ -46,8 +38,9 @@ class RecipeCard extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 5.0),
               child: Text(
-                title,
-                style: TextStyle(color: Colors.white,
+                name,
+                style: TextStyle(
+                  color: Colors.white,
                   fontSize: 19,
                 ),
                 overflow: TextOverflow.ellipsis,
@@ -63,9 +56,10 @@ class RecipeCard extends StatelessWidget {
               children: [
                 Container(
                   padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.4),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(15),
                   ),
                   child: Row(
                     children: [
@@ -75,16 +69,16 @@ class RecipeCard extends StatelessWidget {
                         size: 18,
                       ),
                       SizedBox(width: 7),
-                      Text(rating, style: TextStyle(color: Colors.white),),
+                      Text(rating, style: TextStyle( color: Colors.white,),),
                     ],
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.all(5),
-                 // margin: EdgeInsets.all(10),
+                  margin: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.4),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(15),
                   ),
                   child: Row(
                     children: [
@@ -94,7 +88,7 @@ class RecipeCard extends StatelessWidget {
                         size: 18,
                       ),
                       SizedBox(width: 7),
-                      Text(cookTime, style: TextStyle(color: Colors.white),),
+                      Text(totalTime, style: TextStyle( color: Colors.white,),),
                     ],
                   ),
                 )
